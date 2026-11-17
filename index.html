@@ -73,7 +73,7 @@ h3{font-size:17px;letter-spacing:-.3px;line-height:1.3}
 .about p{color:var(--ink2);font-size:16.5px}.about p+p{margin-top:14px}
 .stack{display:grid;gap:14px}.stack .card{padding:20px}.stack p{font-size:14px;color:var(--ink2)}
 /* education */
-.edu{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+.edu{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:start}
 .edu-main{padding:28px}.deg{font-size:21px;font-weight:800;letter-spacing:-.5px;line-height:1.25}
 .uni{margin-top:5px;font-weight:700;color:var(--ink2)}.trk{font-size:14px;color:var(--ink3)}
 .grade{display:inline-block;margin:16px 0 4px;background:var(--blue);color:#fff;font-weight:800;padding:7px 15px;border-radius:12px;font-size:14px}
@@ -173,6 +173,18 @@ footer{padding:42px 0 30px;border-top:1px solid var(--line);margin-top:30px}
 @media print{.nav,.menu,.cta,.socials{display:none!important}.js .reveal{opacity:1;transform:none}section{padding:22px 0;break-inside:avoid}.card{box-shadow:none;break-inside:avoid}.contact{background:#fff;color:#111;border:1px solid var(--line)}.contact h2,.contact p{color:#111}.contact:before,.contact form{display:none}.cl{background:#fff;border-color:var(--line)}.cl small,.cl em{color:#555}@page{margin:14mm}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.js .reveal{opacity:1;transform:none}}
 
+
+/* ---- alignment fixes ---- */
+.feat>*,.pr>*,.feat-body>*,.ach>*,.edu>*,.two>*,.learn3>*,.cgrid>*,.profiles>*,.skills>*,.more>*,.hero-grid>*,.about>*,.contact>*{min-width:0}
+.pr dd,.hl li,.feat-body p,.ci h3,.ci p{overflow-wrap:anywhere}
+@media(max-width:1000px){.feat{grid-template-columns:minmax(0,1fr)}.thumb{min-height:190px;border-right:0;border-bottom:1px solid var(--line)}}
+@media(max-width:560px){.pr{grid-template-columns:minmax(0,1fr)}.cta{flex-wrap:wrap}.cta .btn{flex:1 1 auto;justify-content:center}}
+.feat-body .cta{margin-top:4px}
+.cgrid>.ci:last-child:nth-child(odd){grid-column:1/-1}
+.ci{min-height:76px}
+.thumb .mark{max-width:100%;overflow-wrap:anywhere}
+@media(max-width:560px){.thumb .mark{font-size:clamp(26px,9vw,36px)}}
+.cl b{overflow-wrap:anywhere;word-break:normal}
 /* ---- design polish ---- */
 :root{--sh:0 1px 2px rgba(15,27,51,.04),0 4px 14px rgba(15,27,51,.04);--sh2:0 10px 30px rgba(15,27,51,.09),0 2px 6px rgba(15,27,51,.05);--r:18px}
 ::selection{background:#cfe0ff;color:var(--ink)}
@@ -202,6 +214,7 @@ section{padding:84px 0}
 .profile{transition:transform .25s,box-shadow .25s,border-color .25s}
 .cl{border-radius:14px}
 @media(max-width:860px){section{padding:60px 0}.hero{padding:40px 0 30px}}
+@media(max-width:560px){.thumb .mark{font-size:clamp(26px,8.5vw,34px)}.thumb{min-height:150px}}
 @media print{#prog{display:none!important}.hero:before{display:none}}
 </style>
 </head>
@@ -241,7 +254,7 @@ section{padding:84px 0}
   <div class="facts">
     <div class="fact"><b>9.02</b><span>CGPA (through Semester 3)</span></div>
     <div class="fact"><b>67</b><span>Credits completed · 4 semesters</span></div>
-    <div class="fact"><b>2</b><span>Live products</span></div>
+    <div class="fact"><b>3</b><span>Deployed projects</span></div>
     <div class="fact"><b>B2</b><span>Cambridge Linguaskill English</span></div>
   </div>
 </div></section>
@@ -297,7 +310,7 @@ section{padding:84px 0}
 
 <!-- 5. PROJECTS -->
 <section id="projects" class="alt"><div class="wrap">
-  <div class="head reveal"><span class="eyebrow">Featured projects</span><h2>Things I've built.</h2><p class="sub">Two live products, with honest status on each.</p></div>
+  <div class="head reveal"><span class="eyebrow">Featured projects</span><h2>Things I've built.</h2><p class="sub">Two live products and one in development, with honest status on each.</p></div>
 
   <article class="card feat reveal">
     <div class="thumb"><span class="live">Live · early stage</span><div><div class="mark">PlacementHire</div><div class="kind">Campus placement platform · Full-stack · AI</div></div></div>
@@ -328,6 +341,20 @@ section{padding:84px 0}
       <div class="cta" style="margin-top:2px"><a class="btn primary" href="https://klcareeros.vercel.app/" target="_blank" rel="noopener">Live demo ↗</a><a class="btn" href="https://github.com/mamidisettimanoj/CareerAI" target="_blank" rel="noopener">GitHub ↗</a></div>
     </div>
   </article>
+  <article class="card feat reveal">
+    <div class="thumb"><span class="live wip">In development</span><div><div class="mark">FoodHire</div><div class="kind">Food discovery · Algorithms · AI</div></div></div>
+    <div class="feat-body">
+      <div><h3 style="font-size:22px">FoodHire</h3></div>
+      <dl class="pr">
+        <dt>Problem</dt><dd>Food apps list restaurants, but make it hard to find a specific dish or to understand why something is recommended.</dd>
+        <dt>Solution</dt><dd>A food-first discovery platform: search by dish, ingredient or dietary need, then see a transparent score explaining each recommendation. It is a discovery tool, with no ordering or delivery.</dd>
+        <dt>Key features</dt><dd><ul class="hl"><li>Smart search combining exact (KMP, Aho-Corasick) and fuzzy (edit-distance) matching over dishes and menus</li><li>“DineScore”: a five-factor, explainable ranking (rating, review volume, distance, budget fit, query relevance)</li><li>Grounded AI assistant on Google Gemini: it extracts intent, queries real data, then only summarises the results</li><li>Provider layer for Google Places, Foursquare, USDA nutrition and Open Food Facts, with caching and local fallback</li><li>Algorithm Lab: step-through visualisations of string, dynamic-programming and network-flow algorithms, plus tools such as meal optimiser, route planner and kitchen matching</li></ul></dd>
+        <dt>Stack</dt><dd><div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Prisma</span><span class="tag">SQLite</span><span class="tag">Tailwind CSS</span><span class="tag">Gemini API</span><span class="tag">Vitest</span><span class="tag">Vercel</span></div></dd>
+      </dl>
+      <p class="note" style="font-size:13px;margin:0">Status: under development. The Vercel deployment is a read-only demo; persistent user data (saved places, reviews) awaits a move from SQLite to PostgreSQL. Source repository is private.</p>
+      <div class="cta" style="margin-top:2px"><a class="btn primary" href="https://foodhire.vercel.app/" target="_blank" rel="noopener">Live demo ↗</a></div>
+    </div>
+  </article>
 </div></section>
 
 <!-- 6. EXPERIENCE -->
@@ -350,10 +377,10 @@ section{padding:84px 0}
   </div>
   <article class="card certs reveal"><div class="certs-h"><span class="lab" style="margin:0">Certifications</span><b>Coursera credentials link to their verification pages</b></div>
     <div class="cgrid">
-      <div class="ci"><i>ML</i><div><h3>Machine Learning Specialization</h3><p>DeepLearning.AI &amp; Stanford · Andrew Ng · 3 courses · Oct 2026</p></div><a href="https://coursera.org/verify/specialization/FSJ8SWGC0FPV" target="_blank" rel="noopener">Verify ↗</a></div>
-      <div class="ci"><i>AL</i><div><h3>Algorithms Specialization</h3><p>Stanford University · Tim Roughgarden · 4 courses · Oct 2026</p></div><a href="https://coursera.org/verify/specialization/EVNBQFDCET54" target="_blank" rel="noopener">Verify ↗</a></div>
-      <div class="ci"><i>DS</i><div><h3>Data Structures and Algorithms Specialization</h3><p>UC San Diego · 6 courses incl. capstone · Oct 2026</p></div><a href="https://coursera.org/verify/specialization/TJNBDZ90T58G" target="_blank" rel="noopener">Verify ↗</a></div>
-      <div class="ci"><i>∑</i><div><h3>Mathematics for Machine Learning and Data Science</h3><p>Luis Serrano, Serrano Academy · 3 courses · Oct 2026</p></div><a href="https://coursera.org/verify/specialization/H1UWFQDJ9OD3" target="_blank" rel="noopener">Verify ↗</a></div>
+      <div class="ci"><i>ML</i><div><h3>Machine Learning Specialization</h3><p>DeepLearning.AI · Stanford · Oct 2026</p></div><a href="https://coursera.org/verify/specialization/FSJ8SWGC0FPV" target="_blank" rel="noopener">Verify ↗</a></div>
+      <div class="ci"><i>AL</i><div><h3>Algorithms Specialization</h3><p>Stanford · Tim Roughgarden · Oct 2026</p></div><a href="https://coursera.org/verify/specialization/EVNBQFDCET54" target="_blank" rel="noopener">Verify ↗</a></div>
+      <div class="ci"><i>DS</i><div><h3>Data Structures and Algorithms Specialization</h3><p>UC San Diego · with capstone · Oct 2026</p></div><a href="https://coursera.org/verify/specialization/TJNBDZ90T58G" target="_blank" rel="noopener">Verify ↗</a></div>
+      <div class="ci"><i>∑</i><div><h3>Mathematics for Machine Learning and Data Science</h3><p>Luis Serrano · Oct 2026</p></div><a href="https://coursera.org/verify/specialization/H1UWFQDJ9OD3" target="_blank" rel="noopener">Verify ↗</a></div>
       <div class="ci"><i>OS</i><div><h3>Operating Systems</h3><p>BITS Pilani · Coursera course · Sep 2026</p></div><a href="https://coursera.org/verify/TEF7C81DLHUN" target="_blank" rel="noopener">Verify ↗</a></div>
       <div class="ci"><i>AA</i><div><h3>Approximation Algorithms</h3><p>TU Eindhoven · Coursera course · Oct 2026</p></div><a href="https://coursera.org/verify/GSHB5A6QW3UY" target="_blank" rel="noopener">Verify ↗</a></div>
       <div class="ci"><i>SH</i><div><h3>Linux Commands and Shell Scripting</h3><p>IBM Skills Network · Coursera course · Sep 2026</p></div><a href="https://coursera.org/verify/Y93QR7J6W58Q" target="_blank" rel="noopener">Verify ↗</a></div>
@@ -382,7 +409,7 @@ section{padding:84px 0}
   <div class="learn3">
     <article class="card reveal"><h3>Technologies being explored</h3><ul><li>Docker and cloud-native tooling</li><li>Infrastructure as Code and AWS</li><li>Generative AI, RAG and AI platforms</li></ul></article>
     <article class="card reveal"><h3>Learning goals</h3><ul><li>Advanced-algorithm practice on LeetCode and CodeChef</li><li>Strong foundations for DevOps and platform roles</li><li>Interview-ready problem solving</li></ul></article>
-    <article class="card reveal"><h3>Ongoing projects</h3><ul><li>PlacementHire launch and hardening</li><li>CareerAI: improving role-fit scoring</li></ul></article>
+    <article class="card reveal"><h3>Ongoing projects</h3><ul><li>PlacementHire launch and hardening</li><li>CareerAI: improving role-fit scoring</li><li>FoodHire: moving to a persistent PostgreSQL database</li></ul></article>
   </div>
 </div></section>
 
@@ -401,6 +428,8 @@ section{padding:84px 0}
     <ul><li>Campus placement platform with five server-authorized roles, college-verified certificates, eligibility engine and application tracking.</li><li>Added a Gemini-based AI assistant and an ML placement-prediction model (80.2% accuracy on my test set); 1,390 automated tests.</li><li>Next.js, React, TypeScript, Prisma, PostgreSQL, AWS S3/SES, Vercel, pnpm monorepo (11 packages).</li></ul>
     <div class="row">CareerAI, placement-readiness analyser<span>klcareeros.vercel.app</span></div>
     <ul><li>Client-side TypeScript/Next.js app scoring skills, resume and role fit with no backend data sharing.</li></ul>
+    <div class="row">FoodHire, food-discovery platform (in development)<span>foodhire.vercel.app</span></div>
+    <ul><li>Next.js/TypeScript app with explainable “DineScore” ranking, KMP/Aho-Corasick and edit-distance search, and a Gemini assistant grounded in database results; Prisma, SQLite, Vitest.</li></ul>
         <h5>Skills</h5>
     <p class="sk"><b>Languages:</b> Java, C, JavaScript, TypeScript, Python (learning) · <b>Web:</b> React, Next.js, Node.js, FastAPI · <b>Data:</b> PostgreSQL, MongoDB, Prisma · <b>Cloud/DevOps:</b> Vercel, AWS S3 &amp; SES, Git, GitHub, Docker (learning) · <b>Systems:</b> Linux, gdb, valgrind, strace, STM32, CAN · <b>AI/ML:</b> linear algebra, statistics, Gemini API</p>
     <h5>Certifications</h5><p>Coursera: Machine Learning (DeepLearning.AI &amp; Stanford); Algorithms (Stanford); Data Structures and Algorithms (UC San Diego); Mathematics for ML and Data Science; Operating Systems (BITS Pilani); Approximation Algorithms (TU Eindhoven); Linux Commands and Shell Scripting (IBM); Operating Systems and You (Google). Cambridge Linguaskill, English B2.</p>
